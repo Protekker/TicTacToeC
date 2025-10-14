@@ -13,11 +13,11 @@ void print_board(const char b[9]) {
 }
 
 int check_winner(const char b[9]) {
-    // Returns 'X' or 'O' as int (their ASCII), or 0 for no winner
+    //Returns 'X' or 'O' as int or 0 for no winner
     const int lines[8][3] = {
-        {0,1,2}, {3,4,5}, {6,7,8}, // rows
-        {0,3,6}, {1,4,7}, {2,5,8}, // cols
-        {0,4,8}, {2,4,6}           // diags
+        {0,1,2}, {3,4,5}, {6,7,8}, //rows
+        {0,3,6}, {1,4,7}, {2,5,8}, //cols
+        {0,4,8}, {2,4,6}           //diag
     };
     for (int i = 0; i < 8; ++i) {
         int a = lines[i][0], c = lines[i][1], d = lines[i][2];
@@ -30,7 +30,7 @@ int is_draw(const char b[9]) {
     for (int i = 0; i < 9; ++i) {
         if (b[i] != 'X' && b[i] != 'O') return 0;
     }
-    return 1;
+    return 1; 
 }
 
 int main(void) {
@@ -38,7 +38,7 @@ int main(void) {
     for (int i = 0; i < 9; ++i) board[i] = '1' + i;
 
     char player = 'X';
-    char input[100];
+    char input[18];
 
     while (1) {
         print_board(board);
@@ -48,8 +48,6 @@ int main(void) {
             printf("\nNo input detected. Exiting.\n");
             return 0;
         }
-
-        // Trim whitespace
         char *p = input;
         while (*p == ' ' || *p == '\t') ++p;
 
@@ -86,7 +84,7 @@ int main(void) {
         }
 
         // switch player
-        player = (player == 'X') ? 'O' : 'X';
+        player = (player == 'X') ? 'O' : 'X'; //If player X then change to O, else X (ternary operator)
     }
 
     return 0;
